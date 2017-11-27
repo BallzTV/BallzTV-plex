@@ -1,30 +1,24 @@
 ART = 'art-default.jpg'
 ICON = 'icon-default.jpg'
 
-SHOWS_URL = 'http://www.cbs.com/shows/%s'
-SECTION_CAROUSEL = 'http://www.cbs.com/carousels/videosBySection/%s/offset/0/limit/40/xs/0'
+API_URL = 'http://btv.hqirc.co.uk/plex/api.php'
 CATEGORIES = [
-    {'category_id': 'primetime', 'title': 'Primetime'},
-    {'category_id': 'daytime', 'title': 'Daytime'},
-    {'category_id': 'late-night', 'title': 'Late Night'},
-    {'category_id': ' ', 'title': 'All Shows'}
+    {'category_id': 'movie', 'title': 'Movies'},
+    {'category_id': 'tv', 'title': 'TV Shows'},
+    {'category_id': 'live', 'title': 'Live Streams'}
 ]
 
-RE_SECTION_IDS = Regex('(?:video\.section_ids = |"section_ids"\:)\[([^\]]+)\]')
-RE_SECTION_METADATA = Regex('(?:video.section_metadata = |"section_metadata"\:)({.+?}})')
-RE_SEASONS = Regex('video.seasons = (.+?);', Regex.DOTALL)
 
-EXCLUDE_SHOWS = []
 
 ####################################################################################################
 def Start():
 
-    ObjectContainer.title1 = 'CBS'
+    ObjectContainer.title1 = 'BallzTV'
     HTTP.CacheTime = CACHE_1HOUR
     HTTP.Headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36'
 
 ####################################################################################################
-@handler('/video/cbs', 'CBS', thumb=ICON, art=ART)
+@handler('/video/ballztv', 'BallzTV', thumb=ICON, art=ART)
 def MainMenu():
 
     oc = ObjectContainer()
